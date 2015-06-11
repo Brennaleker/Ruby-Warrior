@@ -20,8 +20,10 @@ attr_reader :max_health, :current_health, :visited_wall
          @visited_wall = true
       end
    else
-     if warrior.feel.empty? == true && warrior.health <20 && warrior.health >= @health
+     if  warrior.feel.empty? == true && warrior.health <20 && warrior.health >= @health
      warrior.rest!
+     elsif warrior.feel.empty? == true && warrior.health <15 && warrior.health < @health
+     warrior.walk!(:backward)
      elsif warrior.feel.captive?
      warrior.rescue!
      elsif warrior.feel.empty? == true
