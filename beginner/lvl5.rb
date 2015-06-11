@@ -1,6 +1,10 @@
 class Player
+attr_reader :max_health, :current_health
+
   def play_turn(warrior)
-    if warrior.feel.empty? == true && warrior.health <20 && warrior.health >= @health
+    @max_health = 20
+
+    if warrior.feel.empty? == true && warrior.health <@max_health && warrior.health >= @current_health
      warrior.rest!
      elsif warrior.feel.captive?
      warrior.rescue!
@@ -8,6 +12,7 @@ class Player
       warrior.walk!
     else warrior.attack!
     end
-  @health = warrior.health
-  end
-end
+  @current_health = warrior.health
+  end # def end
+
+end # class end
